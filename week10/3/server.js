@@ -5,6 +5,8 @@ const parse = require('co-body')
 
 const messages = []
 
+const formHTML = fs.readFileSync('index.html')
+
 async function handleRequest(request, response) {
   console.log('Method', request.method, 'url', request.url, 'connection', request.socket.remoteAddress)
 
@@ -19,12 +21,13 @@ async function handleRequest(request, response) {
   }
 
   // Read index.html and send it to the client
-  response.write(fs.readFileSync('index.html'))
+  response.write(formHTML)
 
   // print each message in a paragraph tag
   for (let message of messages) {
     response.write('<p>' + message + '</p>')
   }
+  response.end()
 }
 
 const server = http.createServer(handleRequest)
