@@ -19,14 +19,14 @@ Run the following in your terminal:
 npm install co-body
 ```
 
-Next try putting this code in a file an running it:
+Next try putting this code in a file and running it:
 
 ```js
 const parse = require('co-body')
 const http = require('http')
 
 
-function handleRequest* (request, response) {
+async function handleRequest (request, response) {
 
   response.setHeader('Content-Type', 'text/html')
   if (request.method === 'GET') {
@@ -37,7 +37,7 @@ function handleRequest* (request, response) {
       </form>
       `)
   } else {
-    console.log(yield parse(request))
+    console.log(await parse(request))
     response.end('You posted!')
   }
 
