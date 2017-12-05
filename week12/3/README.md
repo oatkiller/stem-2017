@@ -1,0 +1,1 @@
+Make a copy of your todo list app in this directory. Modify the copy by adding a button next to each item. The button should say 'delete' or something like that. When the user presses the button, the items should be removed. Good luck!
