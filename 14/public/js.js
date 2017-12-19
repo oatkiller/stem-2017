@@ -1,5 +1,4 @@
 var socket = io();
-console.log(socket)
 
 const form = document.forms[0]
 
