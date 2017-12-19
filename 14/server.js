@@ -17,7 +17,19 @@ const webServer = http.createServer(
 const socketServer = socketIO.listen(webServer)
 
 socketServer.on('connection', function(socket) {
-  console.log('got a socket connection')
+  console.log('user connected')
+
+  socket.on('disconnect', function() {
+    console.log('user disconnected')
+  })
+
+  socket.on('message', function(message) {
+    socketServer.emit(
+      'message',
+      message,
+      { for: 'everyone' }
+    )
+  })
 })
 
 webServer.listen(3000)
